@@ -1,0 +1,4 @@
+ServiceName,Name,IPAddress,WaitForReady
+sapsan2k12,sapsan2k12,192.168.0.135,y
+curiosity-win2012r2dc,win2012r2dc,192.168.0.137,n
+sapsan2k8r2x64,sapsan2k8r2x64,,n
