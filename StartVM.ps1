@@ -9,3 +9,4 @@
 $op = Start-AzureVM -ServiceName $ServiceName -Name $Name
 
 $toString = $op.OperationId + ":" + $op.OperationStatus + ":" + $Name
+$toString
