@@ -5,7 +5,8 @@
 )
 
 $Servers = Import-Csv $LabCSVFilePath
-foreach ($Server in $Servers)
+
+for($i=$Servers.length-1;$i -ge 0;$i--)
 {
-    Get-AzureVM -ServiceName $Server.ServiceName -Name $Server.Name | Stop-AzureVM -Force
+    Get-AzureVM -ServiceName $Servers[$i].ServiceName -Name $Servers[$i].Name | Stop-AzureVM -Force
 }
