@@ -5,16 +5,22 @@
 )
 
 $Servers = Import-Csv $LabCSVFilePath
+$StartedVM_Begin = 0
+$StartedVM_Current = 0
 foreach ($Server in $Servers)
 {
     .\StartVM.ps1 -ServiceName $Server.ServiceName -Name $Server.Name -IPAddress $Server.IPAddress
-    if($Server.NeedToWaitForReady -eq "y")
+    if($Server.WaitForPastReady -eq "y")
     {
-        do
+        for($i=$StartedVM_Begin;$i -le $StartedVM_Current;$i++)
         {
-            Sleep 30
-            "Sleep 30 sec" | Out-Default
-        }
-        while((Get-AzureVM -ServiceName $Server.ServiceName -Name $Server.Name).Status -ne "ReadyRole")
+            do
+            {
+                Sleep 15
+            }
+            while((Get-AzureVM -ServiceName $Servers[$i].ServiceName -Name $Servers[$i].Name).Status -ne "ReadyRole")
+         }
+         $StartedVM_Begin = $StartedVM_Current + 1
     }
+    $StartedVM_Current++
 }
