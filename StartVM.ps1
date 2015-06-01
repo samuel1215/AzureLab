@@ -4,17 +4,8 @@
     $ServiceName,
     [parameter(Mandatory=$true)]
     [string]
-    $Name,
-    [parameter(Mandatory=$false)]
-    [string]
-    $IPAddress
+    $Name
 )
+$op = Start-AzureVM -ServiceName $ServiceName -Name $Name
 
-if($IPAddress)
-{
-    Get-AzureVM -ServiceName $ServiceName -Name $Name | Set-AzureStaticVNetIP -IPAddress $IPAddress | Update-AzureVM
-}
-
-$vm = Start-AzureVM -ServiceName $ServiceName -Name $Name
-
-$vm.OperationId
+$toString = $op.OperationId + ":" + $op.OperationStatus + ":" + $Name

@@ -1,6 +1,6 @@
-ServiceName,Name,IPAddress,WaitForPastReady
-sapsan2k12,sapsan2k12,192.168.0.135,n
-curiosity-win2012r2dc,win2012r2dc,192.168.0.137,y
-sapsan2k8r2x64,sapsan2k8r2x64,,n
-dt-exch2010-mb,dt-exch2010-mb,,n
-dt-exch2010-cs,dt-exch2010-cs,,y
+ServiceName,Name,WaitForPastReady
+sapsan2k12,sapsan2k12,n
+curiosity-win2012r2dc,win2012r2dc,y
+sapsan2k8r2x64,sapsan2k8r2x64,n
+dt-exch2010-mb,dt-exch2010-mb,n
+dt-exch2010-cs,dt-exch2010-cs,y
